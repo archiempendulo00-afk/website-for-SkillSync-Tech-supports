@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSync Tech Support</title>
+  <link rel="stylesheet" href="C:/Users/archi/Documents/style.css">
+  <style>
+    :root {
+      --primary: #0073e6;
+      --secondary: #00c896;
+      --dark: #222;
+      --light: #f4f8fb;
+      --gray: #6c757d;
+      --danger: #dc3545;
+      --warning: #ffc107;
+      --success: #28a745;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: var(--light);
+      color: #333;
+    }
+    
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo {
+      height: 60px;
+      width: auto;
+      background: white;
+      padding: 5px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    
+    /* Navigation */
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 115, 230, 0.8), rgba(0, 200, 150, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230073E6"/><path d="M0 0L100 100" stroke="%2300C896" stroke-width="2"/><path d="M100 0L0 100" stroke="%2300C896" stroke-width="2"/></svg>');
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      margin-bottom: 40px;
+    }
+    
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .btn:hover {
+      background: #005bb9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+    }
+    
+    section {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+    }
+    
+    section:hover {
+      transform: translateY(-5px);
+    }
+    
+    h2 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    h2 i {
+      color: var(--secondary);
+    }
+    
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    
+    th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    tr:hover {
+      background-color: #e9f7ff;
+    }
+    
+    .status-badge {
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .status-active {
+      background-color: var(--success);
+      color: white;
+    }
+    
+    .status-warning {
+      background-color: var(--warning);
+      color: black;
+    }
+    
+    .status-danger {
+      background-color: var(--danger);
+      color: white;
+    }
+    
+    /* Asset Table Container */
+    .table-container {
+      overflow-x: auto;
+      max-height: 600px;
+      margin: 20px 0;
+    }
+    
+    /* Filter Controls */
+    .filter-controls {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .filter-controls select, .filter-controls input {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    /* List Styles */
+    ul {
+      padding-left: 20px;
+      margin: 15px 0;
+    }
+    
+    li {
+      margin-bottom: 10px;
+    }
+    
+    /* Call to Action */
+    .cta {
+      text-align: center;
+      margin: 25px 0 15px;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .social-links {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .social-links a {
+      color: #ccc;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--secondary);
+    }
+    
+    /* Stats Section */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+    
+    .stat-card {
+      text-align: center;
+      padding: 20px;
+      background: #f0f8ff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+      
+      nav {
+        display: none;
+        width: 100%;
+      }
+      
+      nav.active {
+        display: block;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      section {
+        padding: 20px;
+      }
+      
+      .filter-controls {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-container">
+    <div class="logo-container">
+      <img class="logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0ZXh0IHg9IjEwIiB5PSIzNSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwNzNlNiI+U2tpbGxTeW5jPC90ZXh0Pjx0ZXh0IHg9IjExMCIgeT0iNDUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzAwYzg5NiI+VGVjaCBTdXBwb3J0PC90ZXh0Pjwvc3ZnPg==" alt="SkillSync Tech Support Logo">
+      <div class="logo-text">SkillSync Tech Support</div>
+    </div>
+    <button class="mobile-menu-btn" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="#call-log"><i class="fas fa-phone"></i> Call Log</a></li>
+        <li><a href="#escalation-procedure"><i class="fas fa-level-up-alt"></i> Escalation</a></li>
+        <li><a href="#troubleshooting"><i class="fas fa-tools"></i> Troubleshooting</a></li>
+        <li><a href="#asset-register"><i class="fas fa-laptop"></i> Assets</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Professional IT Support Solutions</h1>
+  <p>Efficient technical support with rapid response times and expert troubleshooting</p>
+  <a href="#call-log" class="btn">Report an Issue</a>
+</div>
+
+<main>
+  <section id="home">
+    <h2><i class="fas fa-home"></i> Home</h2>
+    <p>Welcome to SkillSync Tech Support! We provide comprehensive IT support services including call logging, escalation procedures, troubleshooting guides, and asset management for seamless technical assistance.</p>
+    <div class="features" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 25px;">
+      <div style="text-align: center; padding: 15px; background: #f0f8ff; border-radius: 8px;">
+        <i class="fas fa-phone-alt" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;"></i>
+        <h3>Quick Support</h3>
+        <p>Fast response times with our streamlined call logging system</p>
+      </div>
+      <div style="text-align: center; padding: 15px; background: #f0f8ff; border-radius: 8px;">
+        <i class="fas fa-chart-line" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;"></i>
+        <h3>Efficient Escalation</h3>
+        <p>Structured escalation process for complex issues</p>
+      </div>
+      <div style="text-align: center; padding: 15px; background: #f0f8ff; border-radius: 8px;">
+        <i class="fas fa-toolbox" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;"></i>
+        <h3>Expert Troubleshooting</h3>
+        <p>Proven methodology to resolve issues effectively</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2><i class="fas fa-info-circle"></i> About Us</h2>
+    <p>SkillSync Tech Support is dedicated to providing efficient technical support with a modern approach. Our team of certified professionals ensures that your IT issues are resolved quickly and effectively, minimizing downtime and maximizing productivity.</p>
+    <p>We pride ourselves on our customer-first approach and continuously strive to improve our processes to deliver exceptional service.</p>
+  </section>
+
+  <section id="call-log">
+    <h2><i class="fas fa-phone"></i> Call Log Form</h2>
+    <p>Use the form below to report technical issues. Our support team will contact you shortly after submission.</p>
+    
+    <form id="callLogForm" style="margin-top: 20px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+          <label for="name" style="display: block; margin-bottom: 5px; font-weight: bold;">Your Name</label>
+          <input type="text" id="name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+        <div>
+          <label for="email" style="display: block; margin-bottom: 5px; font-weight: bold;">Email Address</label>
+          <input type="email" id="email" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+        </div>
+      </div>
+      
+      <div style="margin-top: 15px;">
+        <label for="issue" style="display: block; margin-bottom: 5px; font-weight: bold;">Issue Description</label>
+        <textarea id="issue" required rows="4" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+      </div>
+      
+      <div style="margin-top: 15px;">
+        <label for="urgency" style="display: block; margin-bottom: 5px; font-weight: bold;">Urgency Level</label>
+        <select id="urgency" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+          <option value="low">Low - General inquiry</option>
+          <option value="medium">Medium - Issue affecting work</option>
+          <option value="high">High - Critical system down</option>
+        </select>
+      </div>
+      
+      <div style="margin-top: 20px; text-align: center;">
+        <button type="submit" style="background: var(--primary); color: white; padding: 12px 25px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Submit Request</button>
+      </div>
+    </form>
+    
+    <div class="cta">
+      <p>Prefer to use our external form?</p>
+      <a href="https://forms.office.com/r/GfABPVtkQR" target="_blank" class="btn">Open Full Call Log Form</a>
+    </div>
+  </section>
+
+  <section id="escalation-procedure">
+    <h2><i class="fas fa-level-up-alt"></i> Escalation Procedure</h2>
+    <p>Our structured escalation process ensures that unresolved issues are routed to the appropriate support level in a timely manner.</p>
+    <table>
+      <tr>
+        <th>Support Level</th>
+        <th>Responsibilities</th>
+        <th>Escalation Criteria</th>
+        <th>Response Time</th>
+      </tr>
+      <tr>
+        <td>Front Line Support</td>
+        <td>Basic troubleshooting, FAQs, password reset</td>
+        <td>Unresolved within 15 mins</td>
+        <td>Immediate</td>
+      </tr>
+      <tr>
+        <td>Second Level Support</td>
+        <td>Advanced troubleshooting, software bugs</td>
+        <td>Unresolved within 1 hr</td>
+        <td>Within 30 minutes</td>
+      </tr>
+      <tr>
+        <td>Third Level Support</td>
+        <td>Deep technical expertise, vendor coordination</td>
+        <td>Unresolved by 2nd Level</td>
+        <td>Within 2 hours</td>
+      </tr>
+      <tr>
+        <td>Vendor/Developer</td>
+        <td>Product bugs requiring patches</td>
+        <td>Confirmed product issue</td>
+        <td>Within 24 hours</td>
+      </tr>
+    </table>
+
+    <div class="cta">
+      <a href="documents/XHIS512_ LOG FORM PHASE 2_ST10479992 (1).pdf" class="btn">Download Full Escalation Procedure (PDF)</a>
+    </div>
+  </section>
+
+  <section id="troubleshooting">
+    <h2><i class="fas fa-tools"></i> Troubleshooting Questions</h2>
+    <p>Our help desk agents follow structured questions to identify, isolate, and resolve problems efficiently.</p>
+    
+    <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+      <h3 style="color: var(--secondary); margin-bottom: 15px;">Troubleshooting Flowchart</h3>
+      <div style="text-align: center; margin: 20px 0;">
+        <div style="display: inline-block; padding: 15px 25px; background: var(--primary); color: white; border-radius: 8px; margin: 10px;">
+          Identify the Problem
+        </div>
+        <div style="margin: 10px;">↓</div>
+        <div style="display: inline-block; padding: 15px 25px; background: var(--primary); color: white; border-radius: 8px; margin: 10px;">
+          Establish Theory
+        </div>
+        <div style="margin: 10px;">↓</div>
+        <div style="display: inline-block; padding: 15px 25px; background: var(--primary); color: white; border-radius: 8px; margin: 10px;">
+          Test Theory
+        </div>
+        <div style="margin: 10px;">↓</div>
+        <div style="display: inline-block; padding: 15px 25px; background: var(--primary); color: white; border-radius: 8px; margin: 10px;">
+          Implement Solution
+        </div>
+      </div>
+    </div>
+    
+    <ul>
+      <li><strong>Initial Info Gathering:</strong> What is the exact issue? When did it occur? What were you doing when it happened?</li>
+      <li><strong>Reproducing Issue:</strong> Can the problem be replicated? Does it happen consistently?</li>
+      <li><strong>Environment Check:</strong> OS version, software version, error codes, recent changes?</li>
+      <li><strong>Basic Steps:</strong> Restart device, check for updates, verify connections?</li>
+      <li><strong>Isolation:</strong> Does it affect all users or just one account? All devices or just one?</li>
+    </ul>
+    <p><em>Reference: CompTIA Troubleshooting Methodology (Andrews, Dark & West, 2022)</em></p>
+
+    <div class="cta">
+      <a href="documents/XHIS5122 ST10478667 Troubleshooting Questions Phase 3.pdf" class="btn">Download Full Troubleshooting Guide (PDF)</a>
+    </div>
+  </section>
+
+  <section id="asset-register">
+    <h2><i class="fas fa-laptop"></i> Asset Register</h2>
+    <p>This register tracks IT assets for accountability and support management. Based on the data provided, we have identified that <strong>44 computers need to be replaced</strong> as they are over five years old, which impacts performance and security.</p>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <i class="fas fa-desktop" style="font-size: 2rem; color: var(--primary);"></i>
+        <div class="stat-number">44</div>
+        <div>Computers to Replace</div>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: var(--warning);"></i>
+        <div class="stat-number">13+</div>
+        <div>Years Average Age</div>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-bug" style="font-size: 2rem; color: var(--danger);"></i>
+        <div class="stat-number">18</div>
+        <div>Average Incidents/Year</div>
+      </div>
+    </div>
+    
+    <div class="filter-controls">
+      <div>
+        <label for="departmentFilter">Filter by Department:</label>
+        <select id="departmentFilter">
+          <option value="all">All Departments</option>
+          <option value="Marketing">Marketing</option>
+          <option value="HR">HR</option>
+          <option value="SALES">Sales</option>
+        </select>
+      </div>
+      <div>
+        <label for="statusFilter">Filter by Status:</label>
+        <select id="statusFilter">
+          <option value="all">All Status</option>
+          <option value="replace">Needs Replacement</option>
+          <option value="keep">Can Keep</option>
+        </select>
+      </div>
+      <div>
+        <label for="search">Search:</label>
+        <input type="text" id="search" placeholder="Search assets...">
+      </div>
+    </div>
+    
+    <div class="table-container">
+      <table id="assetTable">
+        <thead>
+          <tr>
+            <th>Computer Name</th>
+            <th>Computer Serial</th>
+            <th>Screen Serial</th>
+            <th>Type</th>
+            <th>RAM</th>
+            <th>CPU</th>
+            <th>HDD</th>
+            <th>OS</th>
+            <th>Year Acquired</th>
+            <th>Years in Use</th>
+            <th>Incidents/Year</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Marketing Computers -->
+          <tr>
+            <td>Marketing01</td>
+            <td>38837141</td>
+            <td>G7D84E045932</td>
+            <td>HP</td>
+            <td>1GB</td>
+            <td>1GHz</td>
+            <td>320Gb</td>
+            <td>Windows 7</td>
+            <td>2012</td>
+            <td>13</td>
+            <td>20</td>
+            <td><span class="status-badge status-danger">Replace</span></td>
+          </tr>
+          <tr>
+            <td>Marketing02</td>
+            <td>38837143</td>
+            <td>G7D83E044463</td>
+            <td>HP</td>
+            <td>2GB</td>
+            <td>1GHz</td>
+            <td>500GB</td>
+            <td>Windows 8.1</td>
+            <td>2013</td>
+            <td>12</td>
+            <td>15</td>
+            <td><span class="status-badge status-danger">Replace</span></td>
+          </tr>
+          <tr>
+            <td>Marketing03</td>
+            <td>38837145</td>
+            <td>G7D84E044954</td>
+            <td>HP</td>
+            <td>2GB</td>
+            <td>1GHz</td>
+            <td>500GB</td>
+            <td>Windows 8.1</td>
+            <td>2016</td>
+            <td>9</td>
+            <td>17</td>
+            <td><span class="status-badge status-warning">Monitor</span></td>
+          </tr>
+          <!-- Additional rows would be added here following the same pattern -->
+          <tr>
+            <td>HR001</td>
+            <td>576867</td>
+            <td>N7E3DG290881</td>
+            <td>HP</td>
+            <td>1GB</td>
+            <td>1GHz</td>
+            <td>320Gb</td>
+            <td>Windows 7</td>
+            <td>2010</td>
+            <td>15</td>
+            <td>26</td>
+            <td><span class="status-badge status-danger">Replace</span></td>
+          </tr>
+          <tr>
+            <td>HR002</td>
+            <td>577984</td>
+            <td>N7E3DG291048</td>
+            <td>HP</td>
+            <td>1GB</td>
+            <td>1GHz</td>
+            <td>320Gb</td>
+            <td>Windows 7</td>
+            <td>2011</td>
+            <td>14</td>
+            <td>29</td>
+            <td><span class="status-badge status-danger">Replace</span></td>
+          </tr>
+          <tr>
+            <td>SALES101</td>
+            <td>306284</td>
+            <td>V9G75J013242</td>
+            <td>HP</td>
+            <td>2GB</td>
+            <td>1GHz</td>
+            <td>500GB</td>
+            <td>Windows 8.1</td>
+            <td>2013</td>
+            <td>12</td>
+            <td>17</td>
+            <td><span class="status-badge status-danger">Replace</span></td>
+          </tr>
+          <tr>
+            <td>SALES106</td>
+            <td>306545</td>
+            <td>V9G75J013143</td>
+            <td>HP</td>
+            <td>2GB</td>
+            <td>1GHz</td>
+            <td>500GB</td>
+            <td>Windows 8.1</td>
+            <td>2017</td>
+            <td>8</td>
+            <td>15</td>
+            <td><span class="status-badge status-warning">Monitor</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 30px;">
+      <h3 style="color: var(--primary); margin-bottom: 15px;">Replacement Motivation</h3>
+      <p>The computers are over five years old, which means they are slower, more costly to maintain, and no longer fully secure. Replacing the computers will improve speed, keep the data safe, and ensure that we can run the latest software without issues and not experience downtime. The employees will work more efficiently.</p>
+    </div>
+    
+    <div class="cta">
+      <a href="documents/Kirsty Sethosa. ST10078610. XHIS5122MM _Asset Register.pdf" class="btn">Download Full Asset Report (PDF)</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2><i class="fas fa-envelope"></i> Contact</h2>
+    <p>Reach out to our support team through any of the following channels:</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+      <div style="text-align: center; padding: 20px; background: #f0f8ff; border-radius: 8px;">
+        <i class="fas fa-envelope" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+        <h3>Email Support</h3>
+        <p>ithelp@techsupport.com</p>
+        <p>Response within 2 hours</p>
+      </div>
+      
+      <div style="text-align: center; padding: 20px; background: #f0f8ff; border-radius: 8px;">
+        <i class="fas fa-phone" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+        <h3>Phone Support</h3>
+        <p>+1 (555) 123-HELP</p>
+        <p>Mon-Fri, 8AM-6PM EST</p>
+      </div>
+      
+      <div style="text-align: center; padding: 20px; background: #f0f8ff; border-radius: 8px;">
+        <i class="fas fa-comment-dots" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+        <h3>Live Chat</h3>
+        <p>Available on our portal</p>
+        <p>24/7 for urgent issues</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2025 SkillSync Tech Support | Group 1 | Lecturer: Lerato Phokompe</p>
+    <p style="margin-top: 10px; font-size: 0.9em;">This website is for educational purposes only</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  document.getElementById('menuToggle').addEventListener('click', function() {
+    document.getElementById('mainNav').classList.toggle('active');
+  });
+  
+  // Form submission
+  document.getElementById('callLogForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you for submitting your request. Our support team will contact you shortly.');
+    this.reset();
+  });
+  
+  // Smooth scrolling for navigation
+  document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: 'smooth'
+      });
+      
+      // Close mobile menu if open
+      document.getElementById('mainNav').classList.remove('active');
+    });
+  });
+  
+  // Asset table filtering
+  document.addEventListener('DOMContentLoaded', function() {
+    const departmentFilter = document.getElementById('departmentFilter');
+    const statusFilter = document.getElementById('statusFilter');
+    const searchInput = document.getElementById('search');
+    const table = document.getElementById('assetTable');
+    const rows = table.getElementsByTagName('tr');
+    
+    // Filter function
+    function filterTable() {
+      const departmentValue = departmentFilter.value;
+      const statusValue = statusFilter.value;
+      const searchValue = searchInput.value.toLowerCase();
+      
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+        let departmentMatch = departmentValue === 'all' || cells[0].textContent.includes(departmentValue);
+        let statusMatch = statusValue === 'all' || cells[11].textContent.includes(statusValue);
+        let searchMatch = searchValue === '' || 
+          Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(searchValue));
+        
+        if (departmentMatch && statusMatch && searchMatch) {
+          rows[i].style.display = '';
+        } else {
+          rows[i].style.display = 'none';
+        }
+      }
+    }
+    
+    // Add event listeners to filters
+    departmentFilter.addEventListener('change', filterTable);
+    statusFilter.addEventListener('change', filterTable);
+    searchInput.addEventListener('keyup', filterTable);
+  });
+</script>
+</body>
+</html>

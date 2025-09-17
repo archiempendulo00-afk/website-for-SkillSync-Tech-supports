@@ -1,0 +1,78 @@
+/* SkillSyncTechSupport styles using green, blue, and white */
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body style */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* White background */
+    color: #003366; /* Dark blue text */
+    line-height: 1.6;
+}
+
+/* Header with gradient */
+header {
+    background: linear-gradient(135deg, #00cc66, #0066cc); /* Green to blue gradient */
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* Navigation menu */
+nav ul {
+    list-style: none;
+    margin-top: 15px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00ff99; /* Light green hover */
+}
+
+/* Section styling */
+section {
+    padding: 40px 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    background-color: #e6f2ff; /* Very light blue */
+    border-left: 8px solid #00cc66; /* Green accent */
+    border-radius: 10px;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #0066cc; /* Blue footer */
+    color: white;
+}
+
+/* Responsive text for small devices */
+@media (max-width: 600px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    section {
+        padding: 20px;
+        margin: 10px;
+    }
+}
+
